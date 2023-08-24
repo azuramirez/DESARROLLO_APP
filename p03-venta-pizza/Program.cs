@@ -26,9 +26,15 @@ ings=args[1].Split("+");
 foreach(string i in ings) {
   total+=5;
   switch(char.Parse(i.ToUpper())) {
-    case 'E' : ingredientes+="Extraqueso ";break;
-    case 'C' : ingredientes+="Champiñones ";break;
-    case 'P' : ingredientes+="Piña ";break;
+    case 'E' : 
+       ingredientes+="Extraqueso ";
+      break;
+    case 'C' : 
+       ingredientes+="Champiñones ";
+      break;
+    case 'P' :
+       ingredientes+="Piña ";
+      break;
   }
 }
 
@@ -54,12 +60,12 @@ Console.WriteLine("Total : {0:c2} ",total);
 return 0;
 
 static void Menu() {
-Console.Clear();
-Console.WriteLine("\nElije como deseas armar tu pedido de pizza\n");
-Console.WriteLine("Tamaño : [P]equeña-$10 [M]ediana-$20 [G]rande-$30");
-Console.WriteLine("Ingredientes : [E]xtra queso [C]hampiñoness[P]iña, unidos por un + ($5)");
-Console.WriteLine("Cubierta : [D]elgada [G]ruesa");
-Console.WriteLine("Donde : [A]qui [L]levar");
-Console.WriteLine("Cantidad : ¿?");
+  Console.Clear();
+  Console.WriteLine("\nElije como deseas armar tu pedido de pizza\n");
+  Console.WriteLine("Tamaño : [P]equeña-$10 [M]ediana-$20 [G]rande-$30");
+  Console.WriteLine("Ingredientes : [E]xtra queso [C]hampiñoness[P]iña, unidos por un + ($5)");
+  Console.WriteLine("Cubierta : [D]elgada [G]ruesa");
+  Console.WriteLine("Donde : [A]qui [L]levar");
+  Console.WriteLine("Cantidad : ¿?");
 }
 
