@@ -66,6 +66,5 @@ static void Menu() {
   Console.WriteLine("Ingredientes : [E]xtra queso [C]hampiñoness[P]iña, unidos por un + ($5)");
   Console.WriteLine("Cubierta : [D]elgada [G]ruesa");
   Console.WriteLine("Donde : [A]qui [L]levar");
-  Console.WriteLine("Cantidad : ¿?");
+  Console.WriteLine("Cantidad : ¿?"); 
 }
-

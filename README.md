@@ -13,4 +13,7 @@
 - p05-tabla-de-conversión
 - p06-factorial-números
 
+# Actividad 3
+ - p07-estadisticas
+
 
