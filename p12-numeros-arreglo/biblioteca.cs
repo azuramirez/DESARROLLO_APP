@@ -20,7 +20,7 @@ public static class biblioteca {
     double m=a.Length;
     foreach(double elementos in a)
        m=elementos;
-       if(a.Length!=0)
+       if(a.Length>=0)
         m=a.Length-1;
        return m;
   }
