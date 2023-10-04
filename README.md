@@ -29,4 +29,14 @@
 
  # Actividad 5
   - p15-control-bancario-v2
+  - p16-control-ventas
+
+ # Primer examen parcial
+  - p17-control-ventas-v1
+
+ # Actividad 6
+  - p18-linq1
+  - p19-linq2
+  - p20-linq3
+
 
