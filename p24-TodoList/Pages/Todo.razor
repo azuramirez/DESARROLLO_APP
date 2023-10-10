@@ -1,7 +1,7 @@
 ﻿@page "/todo"
 
 <PageTitle>Tareas por hacer - XD</PageTitle>
-<h3>Tareas por hacer</h3>
+<h3>Tareas por hacer (@todos.Count(t=>it.IsDone))</h3>
 
 <ul>
     @foreach(var todo in todos) {
