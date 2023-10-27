@@ -1,6 +1,6 @@
-public class EmpleadoServicio{
+public class ArticuloServicio{
     private readonly ContextoDatos ctx;
-    public EmpleadoServicio(ContextoDatos contexto) => ctx = contexto;
+    public ArticuloServicio(ContextoDatos contexto) => ctx = contexto;
     public List<Articulo> ObtenerTodo() {
         return ctx.Articulos.ToList();
     }

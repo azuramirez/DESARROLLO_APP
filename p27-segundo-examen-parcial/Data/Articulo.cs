@@ -12,4 +12,5 @@ public class Articulo {
     [Range(1,2500)]
     public double Precio {get; set;}
     public string UdeMedida {get; set;}
+
 }

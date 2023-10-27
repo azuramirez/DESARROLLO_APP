@@ -10,7 +10,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 
-builder.Services.AddScoped<EmpleadoServicio>();
+builder.Services.AddScoped<ArticuloServicio>();
 
 builder.Services.AddDbContext<ContextoDatos>(options =>
 options.UseSqlite(builder.Configuration.GetConnectionString("bdcon")));

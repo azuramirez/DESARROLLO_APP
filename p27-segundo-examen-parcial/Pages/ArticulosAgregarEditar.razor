@@ -1,38 +1,40 @@
-@page "/empleado/agregar"
-@page "/empleado/editar/{Id:int}"
-@inject EmpleadoServicio empleadoServicio
+@page "/articulo/agregar"
+@page "/articulo/editar/{Id:int}"
+@inject ArticuloServicio articuloServicio
 @inject NavigationManager NavigationManager
+
+
 
 <h3>@Titulo</h3>
 
 <div class="row">
     <div class="col-md-6">
-        <EditForm Model="@emp" OnValidSubmit="Grabar">
+        <EditForm Model="@art" OnValidSubmit="Grabar">
             <DataAnnotationsValidator/>
             <div class="form-group">
                 <label for="Descripcion">Descripcion</label>
-                <InputText class="form-control" @bind-Value="emp.Descripcion"/> 
-                <ValidationMessage For="@(()=>emp.Descripcion)"/>
+                <InputText class="form-control" @bind-Value="art.Descripcion"/> 
+                <ValidationMessage For="@(()=>art.Descripcion)"/>
             </div>
             <div class="form-group">
                 <label for="FechaAlta">FechaAlta</label>
-                <InputDate class="form-control" @bind-Value="emp.FechaAlta"/>
-                <ValidationMessage For="@(()=>emp.FechaAlta)"/>
+                <InputDate class="form-control" @bind-Value="art.FechaAlta"/>
+                <ValidationMessage For="@(()=>art.FechaAlta)"/>
             </div>
             <div class="form-group">
                 <label for="Cantidad">Cantidad</label>
-                <InputNumber typeclass="form-control" @bind-Value="emp.Cantidad"/>
-                <ValidationMessage For="@(()=>emp.Cantidad)"/>
+                <InputNumber typeclass="form-control" @bind-Value="art.Cantidad"/>
+                <ValidationMessage For="@(()=>art.Cantidad)"/>
             </div>
              <div class="form-group">
                 <label for="Precio">Precio</label>
-                <InputNumber typeclass="form-control" @bind-Value="emp.Precio"/>
-                <ValidationMessage For="@(()=>emp.Precio)"/>
+                <InputNumber typeclass="form-control" @bind-Value="art.Precio"/>
+                <ValidationMessage For="@(()=>art.Precio)"/>
             </div>
             <div class="form-group">
                 <label for="UdeMedida">UdeMedida</label>
-                <InputText class="form-control" @bind-Value="emp.UdeMedida"/>
-                <ValidationMessage For="@(()=>emp.UdeMedida)"/>
+                <InputText class="form-control" @bind-Value="art.UdeMedida"/>
+                <ValidationMessage For="@(()=>art.UdeMedida)"/>
             </div>
             <div>
                 @mensaje
@@ -52,26 +54,26 @@
 @code {
     [Parameter]
     public int Id {get; set;}
-    Articulo emp = new Articulo();
+    Articulo art = new Articulo();
 
     private string mensaje = string.Empty;
-    private string Titulo="Agregar Persona";
+    private string Titulo="Agregar Articulo";
 
     protected void Grabar() {
-        if(empleadoServicio.AgregarActualizar(emp)) {
+        if(articuloServicio.AgregarActualizar(art)) {
             mensaje = "Agregado exitosamente ";
         } else mensaje = "No pudo agregarse";
-        NavigationManager.NavigateTo("empleados",forceLoad:true);
+        NavigationManager.NavigateTo("articulos",forceLoad:true);
     }
 
     void Cancel() {
-        NavigationManager.NavigateTo("empleados",forceLoad:true);
+        NavigationManager.NavigateTo("articulos",forceLoad:true);
     }
     
     protected override void OnInitialized() {
         if (Id > 0) {
-        Titulo = "Actualizar Persona";
-        emp = empleadoServicio.EcontrarPorId(Id); }
+        Titulo = "Actualizar Articulo";
+        art = articuloServicio.EcontrarPorId(Id); }
         base.OnInitialized();
         }
 }
