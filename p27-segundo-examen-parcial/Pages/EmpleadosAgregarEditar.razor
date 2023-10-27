@@ -10,37 +10,29 @@
         <EditForm Model="@emp" OnValidSubmit="Grabar">
             <DataAnnotationsValidator/>
             <div class="form-group">
-                <label for="Name">Nombre</label>
-                <InputText class="form-control" @bind-Value="emp.Nombre"/> 
-                <ValidationMessage For="@(()=>emp.Nombre)"/>
+                <label for="Descripcion">Descripcion</label>
+                <InputText class="form-control" @bind-Value="emp.Descripcion"/> 
+                <ValidationMessage For="@(()=>emp.Descripcion)"/>
             </div>
             <div class="form-group">
-                <label for="Rfc">Rfc</label>
-                <InputText class="form-control" @bind-Value="emp.Rfc"/>
-                <ValidationMessage For="@(()=>emp.Rfc)"/>
+                <label for="FechaAlta">FechaAlta</label>
+                <InputDate class="form-control" @bind-Value="emp.FechaAlta"/>
+                <ValidationMessage For="@(()=>emp.FechaAlta)"/>
             </div>
             <div class="form-group">
-                <label for="Edad">Edad</label>
-                <InputNumber typeclass="form-control" @bind-Value="emp.Edad"/>
-                <ValidationMessage For="@(()=>emp.Edad)"/>
+                <label for="Cantidad">Cantidad</label>
+                <InputNumber typeclass="form-control" @bind-Value="emp.Cantidad"/>
+                <ValidationMessage For="@(()=>emp.Cantidad)"/>
+            </div>
+             <div class="form-group">
+                <label for="Precio">Precio</label>
+                <InputNumber typeclass="form-control" @bind-Value="emp.Precio"/>
+                <ValidationMessage For="@(()=>emp.Precio)"/>
             </div>
             <div class="form-group">
-                <label for="Genero" class="control-label"></label>
-                <select @bind="@emp.Genero" class="form-control">
-                <option value="">-Selecciona Genero</option>
-                <option value="Hombre">Hombre</option>
-                <option value="Mujer">Mujer</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Correo">Correo</label>
-                <InputText class="form-control" @bind-Value="emp.Correo"/>
-                <ValidationMessage For="@(()=>emp.Correo)"/>
-            </div>
-            <div class="form-group">
-                <label for="Salario">Salario</label>
-                <InputNumber typeclass="form-control" @bind-Value="emp.Salario"/>
-                <ValidationMessage For="@(()=>emp.Salario)"/>
+                <label for="UdeMedida">UdeMedida</label>
+                <InputText class="form-control" @bind-Value="emp.UdeMedida"/>
+                <ValidationMessage For="@(()=>emp.UdeMedida)"/>
             </div>
             <div>
                 @mensaje
@@ -60,7 +52,7 @@
 @code {
     [Parameter]
     public int Id {get; set;}
-    Empleado emp = new Empleado();
+    Articulo emp = new Articulo();
 
     private string mensaje = string.Empty;
     private string Titulo="Agregar Persona";
