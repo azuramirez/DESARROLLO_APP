@@ -1,4 +1,4 @@
-namespace p26_crud_jugador.Data;
+namespace p25_crud.Data;
 
 public class WeatherForecast
 {

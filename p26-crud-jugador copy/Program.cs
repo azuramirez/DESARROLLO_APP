@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
-using p26_crud_jugador.Data;
-
+using p25_crud.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+
+builder.Services.AddScoped<JugadorServicio>();
 
 builder.Services.AddDbContext<ContextoDatos>(options =>
 options.UseSqlite(builder.Configuration.GetConnectionString("bdcon")));
@@ -22,6 +23,14 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
 }
 
+
+using (var scope = app.Services.CreateScope())
+{
+    var servicios = scope.ServiceProvider;
+    var contexto = servicios.GetRequiredService<ContextoDatos>();
+    contexto.Database.EnsureCreated();
+    InicializadorBD.Inicializar(contexto);
+}
 
 app.UseStaticFiles();
 

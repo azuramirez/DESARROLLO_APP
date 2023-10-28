@@ -18,8 +18,8 @@
             </div>
             <div class="form-group">
                 <label for="FechaAlta">FechaAlta</label>
-                <InputDate class="form-control" @bind-Value="art.FechaAlta"/>
-                <ValidationMessage For="@(()=>art.FechaAlta)"/>
+                <input type="date" class="form-control" @bind="art.FechaAlta" />
+                <ValidationMessage For="@(()=>art.FechaAlta)" />
             </div>
             <div class="form-group">
                 <label for="Cantidad">Cantidad</label>
@@ -33,7 +33,12 @@
             </div>
             <div class="form-group">
                 <label for="UdeMedida">UdeMedida</label>
-                <InputText class="form-control" @bind-Value="art.UdeMedida"/>
+                <select id="udemedida" @bind="art.UdeMedida">
+                @foreach (var um in UdeMedidaDisponibles)
+                {
+                  <option value="@um">@um</option>
+                }
+                </select>
                 <ValidationMessage For="@(()=>art.UdeMedida)"/>
             </div>
             <div>
@@ -58,6 +63,7 @@
 
     private string mensaje = string.Empty;
     private string Titulo="Agregar Articulo";
+    private List<string> UdeMedidaDisponibles = new List<string> { "Metro", "Litro", "Kilo", "Pieza", "Caja" };
 
     protected void Grabar() {
         if(articuloServicio.AgregarActualizar(art)) {
