@@ -40,5 +40,19 @@
   - p20-linq3
   - p21-linq4
   
+ # Actividad 7
+  - p21-linq4
+  - p22-link5
 
+ # Actividad 8
+  - p23-BlazorServer
+  - p24-TodoList
 
+ # Actividad 9
+  - p25-simple-crud
+
+ # Tarea 3
+  - p26-crud-jugador
+
+ # Segundo examen parcial
+  - p27-segundo-examen-parcial
