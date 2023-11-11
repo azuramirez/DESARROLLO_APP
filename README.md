@@ -62,3 +62,7 @@
   
  # Actividad 11
   - p29-crud-universidad-v2
+
+ # Tercer examen parcial
+  - p30-crud-hotel
+
