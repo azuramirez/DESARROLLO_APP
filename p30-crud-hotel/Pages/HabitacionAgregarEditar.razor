@@ -53,7 +53,7 @@
     
     Habitacion cur = new Habitacion();
     private string mensaje = string.Empty;
-    private string Titulo="Agregar Curso";
+    private string Titulo="Agregar Habitacion";
     private bool deshabilitar = false;
     private List<string> TiposDisponibles = new List<string> { "Individual", "Doble", "Triple" };
     
@@ -61,14 +61,14 @@
         if(habitacionServicio.AgregarActualizar(cur)) {
             mensaje = "Agregado exitosamente ";
         } else mensaje = "No pudo agregarse";
-            NavigationManager.NavigateTo("cursos",forceLoad:true);
+            NavigationManager.NavigateTo("habitaciones",forceLoad:true);
     }
     void Cancel() {
-        NavigationManager.NavigateTo("cursos",forceLoad:true);
+        NavigationManager.NavigateTo("habitaciones",forceLoad:true);
     }
     protected override void OnInitialized() {
         if (Id > 0) {
-            Titulo = "Actualizar Curso";
+            Titulo = "Actualizar Habitaciones";
             cur = habitacionServicio.EcontrarPorId(Id);
             deshabilitar = true;
         }

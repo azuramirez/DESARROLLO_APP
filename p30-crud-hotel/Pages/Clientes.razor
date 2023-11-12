@@ -42,13 +42,13 @@
             @if(cliente.Reservaciones.Count==0) {
                 <td>-sin reservaciones-</td>
                 } else {
-                <td>
-                @foreach(var reser in cliente.Reservaciones) {
-                    @String.Format($"{@reser.Habitacion.HabitacionId} - { @reser.Habitacion.Tipo}")<br />
+                    <td>
+                    @foreach(var reser in cliente.Reservaciones) {
+                        @String.Format($"{@reser.Habitacion.HabitacionId} - { @reser.Habitacion.Tipo}")<br />
+                    }
+                    </td>
                 }
-                </td>
-            }
-            <td>
+                <td>
             <a href="cliente/editar/@cliente.Id" class="btn btn-success">Editar</a>
             <a class="btn btn-danger" @onclick="async ()=> await
             Borrar(cliente)">Borrar</a>
