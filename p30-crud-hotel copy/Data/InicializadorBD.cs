@@ -17,26 +17,25 @@ public class InicializadorBD {
         contexto.SaveChanges();
 
         var habitaciones = new List<Habitacion> {
-            new Habitacion {NoHab=12, Tipo="Individual", Piso=1, Costo=1234.00},
-            new Habitacion {NoHab=5, Tipo="Doble", Piso=2, Costo=2500.00},
-            new Habitacion {NoHab=7, Tipo="Triple", Piso=2, Costo=2800.00},
-            new Habitacion {NoHab=10, Tipo="Individual", Piso=4, Costo=1500.00},
-            new Habitacion {NoHab=8, Tipo="Doble", Piso=1, Costo=2464.00},
-            new Habitacion {NoHab=15, Tipo="Triple", Piso=2, Costo=3200.00},
+            new Habitacion {HabitacionId=1, NoHab=12, Tipo="Individual", Piso=1, Costo=1234.00},
+            new Habitacion {HabitacionId=2, NoHab=5, Tipo="Doble", Piso=2, Costo=2500.00},
+            new Habitacion {HabitacionId=3, NoHab=7, Tipo="Triple", Piso=2, Costo=2800.00},
+            new Habitacion {HabitacionId=4, NoHab=10, Tipo="Individual", Piso=4, Costo=1500.00},
+            new Habitacion {HabitacionId=5, NoHab=8, Tipo="Doble", Piso=1, Costo=2464.00},
+            new Habitacion {HabitacionId=6, NoHab=15, Tipo="Triple", Piso=2, Costo=3200.00},
             
         };
         contexto.Habitaciones.AddRange(habitaciones);
         contexto.SaveChanges();
 
         var reservaciones = new List<Reservacion> {
-            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Correa").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Individual" ).HabitacionId, InicioReserva = DateTime.Parse("2022-10-11"), FinReserva = DateTime.Parse("2022-10-12")},
-            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Gonzalez").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Doble" ).HabitacionId, InicioReserva = DateTime.Parse("2021-05-05"), FinReserva = DateTime.Parse("2021-05-08")},
-            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Ramirez").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Triple" ).HabitacionId, InicioReserva = DateTime.Parse("2022-04-01"), FinReserva = DateTime.Parse("2022-05-01")},
-            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Ovalle").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Triple" ).HabitacionId, InicioReserva = DateTime.Parse("2020-04-01"), FinReserva = DateTime.Parse("2020-05-01")},
-            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Ramirez").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Triple" ).HabitacionId, InicioReserva = DateTime.Parse("2023-11-04"), FinReserva = DateTime.Parse("2023-11-05")}
+            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Correa").Id, HabitacionId = habitaciones.Single(c => c.NoHab==12 && c.Piso==1 ).HabitacionId, InicioReserva = DateTime.Parse("2022-10-11"), FinReserva = DateTime.Parse("2022-10-12")},
+            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Gonzalez").Id, HabitacionId = habitaciones.Single(c => c.NoHab==5 && c.Piso==2).HabitacionId, InicioReserva = DateTime.Parse("2021-05-05"), FinReserva = DateTime.Parse("2021-05-08")}
+        //     new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Ramirez").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Triple" ).HabitacionId, InicioReserva = DateTime.Parse("2022-04-01"), FinReserva = DateTime.Parse("2022-05-01")},
+        //     new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Ovalle").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Triple" ).HabitacionId, InicioReserva = DateTime.Parse("2020-04-01"), FinReserva = DateTime.Parse("2020-05-01")},
+        //     new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Ramirez").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Triple" ).HabitacionId, InicioReserva = DateTime.Parse("2023-11-04"), FinReserva = DateTime.Parse("2023-11-05")}
         };
-            contexto.Reservaciones.AddRange(reservaciones
-            );
+            contexto.Reservaciones.AddRange(reservaciones);
             contexto.SaveChanges();
         }
 }

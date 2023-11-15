@@ -29,11 +29,11 @@ public class InicializadorBD {
         contexto.SaveChanges();
 
         var reservaciones = new List<Reservacion> {
-            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Correa").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Individual" ).HabitacionId, InicioReserva = DateTime.Parse("2022-10-11"), FinReserva = DateTime.Parse("2022-10-12")},
-            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Gonzalez").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Doble" ).HabitacionId, InicioReserva = DateTime.Parse("2021-05-05"), FinReserva = DateTime.Parse("2021-05-08")},
-            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Ramirez").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Triple" ).HabitacionId, InicioReserva = DateTime.Parse("2022-04-01"), FinReserva = DateTime.Parse("2022-05-01")},
-            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Ovalle").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Triple" ).HabitacionId, InicioReserva = DateTime.Parse("2020-04-01"), FinReserva = DateTime.Parse("2020-05-01")},
-            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Ramirez").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Triple" ).HabitacionId, InicioReserva = DateTime.Parse("2023-11-04"), FinReserva = DateTime.Parse("2023-11-05")}
+            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Correa").Id, HabitacionId = habitaciones.Single(c => c.NoHab==12 && c.Piso==1 ).HabitacionId, InicioReserva = DateTime.Parse("2022-10-11"), FinReserva = DateTime.Parse("2022-10-12")},
+            new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Gonzalez").Id, HabitacionId = habitaciones.Single(c => c.NoHab==5 && c.Piso==2).HabitacionId, InicioReserva = DateTime.Parse("2021-05-05"), FinReserva = DateTime.Parse("2021-05-08")}
+        //     new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Ramirez").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Triple" ).HabitacionId, InicioReserva = DateTime.Parse("2022-04-01"), FinReserva = DateTime.Parse("2022-05-01")},
+        //     new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Ovalle").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Triple" ).HabitacionId, InicioReserva = DateTime.Parse("2020-04-01"), FinReserva = DateTime.Parse("2020-05-01")},
+        //     new Reservacion { ClienteId = clientes.Single(s => s.Apellido == "Ramirez").Id, HabitacionId = habitaciones.Single(c => c.Tipo == "Triple" ).HabitacionId, InicioReserva = DateTime.Parse("2023-11-04"), FinReserva = DateTime.Parse("2023-11-05")}
         };
             contexto.Reservaciones.AddRange(reservaciones);
             contexto.SaveChanges();

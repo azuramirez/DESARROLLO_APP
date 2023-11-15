@@ -15,7 +15,6 @@ public class Reservacion {
 
     public int DiasReserva => (FinReserva - InicioReserva).Days;
     
-
     public Habitacion Habitacion {get; set;} //Detalle de la relacion muchos a uno
     public Cliente Cliente {get; set;} //Detalle de la relacion muchos a uno
 

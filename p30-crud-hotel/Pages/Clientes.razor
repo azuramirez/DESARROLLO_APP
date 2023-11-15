@@ -34,9 +34,9 @@
             <td>@cliente.Nombre</td>
             <td>@cliente.Apellido</td>
             <td>@cliente.Genero</td>
-            <td>@cliente.FechaCumple</td>
+            <td>@cliente.FechaCumple.ToString("yyyy-MM-dd")</td>
             <td>@cliente.Correo</td>
-            <td>@cliente.Telefono</td>
+            <td>@String.Format("{0:000-000-00-00}", cliente.Telefono)</td>
             <td>@cliente.NombreCompleto</td>
             <td>@cliente.Edad</td>
             @if(cliente.Reservaciones.Count==0) {

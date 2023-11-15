@@ -7,8 +7,8 @@ public class ReservacionServicio {
 
     public List<Reservacion> ObtenerTodo() {
         return ctx.Reservaciones
-        .Include(c=>c.Habitacion)
         .Include(e=>e.Cliente)
+        .Include(c=>c.Habitacion)
         .ToList();
     }
     
