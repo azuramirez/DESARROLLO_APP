@@ -23,7 +23,7 @@
             <th>FechaCumple</th>
             <th>Correo</th>
             <th>Telefono</th>
-            <th>Nombre Completo</th>
+            <th colspan="2">NombreCompleto</th>
             <th>Edad</th>
             <th>Acción</th>
             </tr>
@@ -36,19 +36,11 @@
             <td>@cliente.Genero</td>
             <td>@cliente.FechaCumple.ToString("yyyy-MM-dd")</td>
             <td>@cliente.Correo</td>
-            <td>@String.Format("{0:000-000-00-00}", cliente.Telefono)</td>
-            <td>@cliente.NombreCompleto</td>
+            <td>@cliente.Telefono</td>
+            <td>@cliente.NombreCompleto.Split(' ')[0]</td>
+            <td>@cliente.NombreCompleto.Split(' ')[1]</td>
             <td>@cliente.Edad</td>
-            @if(cliente.Reservaciones.Count==0) {
-                <td>-sin reservaciones-</td>
-                } else {
-                    <td>
-                    @foreach(var reser in cliente.Reservaciones) {
-                        @String.Format($"{@reser.Habitacion.HabitacionId} - { @reser.Habitacion.Tipo}")<br />
-                    }
-                    </td>
-                }
-                <td>
+            <td>
             <a href="cliente/editar/@cliente.Id" class="btn btn-success">Editar</a>
             <a class="btn btn-danger" @onclick="async ()=> await
             Borrar(cliente)">Borrar</a>
@@ -58,6 +50,10 @@
         </tbody>
     </table>
     </div>
+     <h7>Clientes = @totalRegistros()</h7>
+     <h7>Promedio = @calcularPromedio()</h7>
+     <h7>Mujeres = @totalMujeres()</h7>
+     <h7>Hombres = @totalHombres()</h7>
 </div>
 
 @code {
@@ -77,4 +73,37 @@
         string cadenabuscar = e.Value.ToString();
         clientes = clienteServicio.ObtenerTodo(cadenabuscar);
     }
+    
+    private int totalRegistros()
+    {
+        return clientes.Count;
+    }
+
+    private int totalMujeres()
+    {
+        return clientes.Count(c => c.Genero == 'M');
+    }
+
+    private int totalHombres()
+    {
+        return clientes.Count(c => c.Genero == 'H');
+    }
+
+    private int sumaEdad()
+    {
+        return clientes.Sum(c => c.Edad);
+    }
+
+    public int calcularPromedio() {
+        int totalClientes = totalRegistros();
+        int sumaEdades = sumaEdad();
+
+        if (totalClientes == 0) {
+            return 0;
+        }
+
+        int promedio = (int)Math.Round((double)sumaEdades / totalClientes);
+        return promedio;
+    }
+
 }

@@ -21,6 +21,10 @@ public class Habitacion {
         get { return "Tipo:" + Tipo + "-NoHab:" + NoHab + "-Piso:" + Piso + "-Costo:" + Costo; }
     }
 
+    public string HabitacionCompleta3 {
+        get { return Tipo + " " + NoHab + " " + Piso + " " + Costo.ToString("C"); }
+    }
+
     public ICollection<Reservacion> Reservaciones {get; set;} //modela la relacion de uno a muchos
 
 }

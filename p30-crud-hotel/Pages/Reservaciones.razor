@@ -14,9 +14,8 @@
         <table class="table table-hover">
             <thead>
             <tr>
-            <th>ReservacionID</th>
-            <th>Nombre Completo</th>
-            <th>Tipo - NoHab - Piso - Costo</th>
+            <th colspan="2">Nombre Completo</th>
+            <th colspan="4">Tipo - NoHab - Piso - Costo</th>
             <th>InicioReserva</th>
             <th>FinReserva</th>
             <th>DiasReserva</th>
@@ -28,12 +27,18 @@
             @foreach (var reservacion in reservaciones)
             {
             <tr>
-                <td>@reservacion.ReservacionId</td>
-                <td>@reservacion.Cliente.NombreCompleto</td>
-                <td>@reservacion.Habitacion.HabitacionCompleta2</td>
+                <td>@reservacion.Cliente.NombreCompleto.Split(' ')[0]</td>
+                <td>@reservacion.Cliente.NombreCompleto.Split(' ')[1]</td>
+                <td>@reservacion.Habitacion.HabitacionCompleta3.Split(' ')[0]</td>
+                <td>@reservacion.Habitacion.HabitacionCompleta3.Split(' ')[1]</td>
+                <td>@reservacion.Habitacion.HabitacionCompleta3.Split(' ')[2]</td>
+                <td>@reservacion.Habitacion.HabitacionCompleta3.Split(' ')[3]</td>
+                <!-- <td>@String.Format("{0} {1} - {2} - {3}", reservacion.Cliente.Nombre, reservacion.Cliente.Apellido, reservacion.Habitacion.Tipo, reservacion.Habitacion.Piso)
+                </td> -->
                 <td>@reservacion.InicioReserva.ToString("yyyy-MM-dd")</td>
                 <td>@reservacion.FinReserva.ToString("yyyy-MM-dd")</td>
                 <td>@reservacion.DiasReserva</td>
+                <td>@String.Format("{0:C2}", reservacion.Habitacion.Costo*reservacion.DiasReserva)</td>
                 <td>
                 <a
                 href="reservacion/editar/@reservacion.ReservacionId"
@@ -46,6 +51,10 @@
         </tbody>
         </table>
     </div>
+    <h7>Reservas = @totalReservas()</h7>
+    <h7>Dias Reservados = @diasReservados()</h7>
+    <h7>Costo Total = @costoTotal().ToString("C")</h7>
+    
 </div>
 
 @code {
@@ -60,5 +69,20 @@
         if (confirmed)
         if(reservacionServicio.Borrar(reservacion.ReservacionId))
         reservaciones.Remove(reservacion);
+    }
+
+    private int totalReservas()
+    {
+        return reservaciones.Count;
+    }
+
+    private int diasReservados()
+    {
+        return reservaciones.Sum(c => c.DiasReserva);
+    }
+
+    private double costoTotal()
+    {
+        return reservaciones.Sum(c => c.Habitacion.Costo*c.DiasReserva);
     }
 }
