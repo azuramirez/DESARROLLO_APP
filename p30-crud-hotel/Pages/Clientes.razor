@@ -36,7 +36,7 @@
             <td>@cliente.Genero</td>
             <td>@cliente.FechaCumple.ToString("yyyy-MM-dd")</td>
             <td>@cliente.Correo</td>
-            <td>@cliente.Telefono</td>
+            <td>@string.Format("{0:###-###-##-##}",long.Parse(cliente.Telefono))</td>
             <td>@cliente.NombreCompleto.Split(' ')[0]</td>
             <td>@cliente.NombreCompleto.Split(' ')[1]</td>
             <td>@cliente.Edad</td>

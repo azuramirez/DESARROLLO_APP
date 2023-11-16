@@ -11,7 +11,7 @@ public class ClienteServicio {
         .ThenInclude(c=>c.Habitacion);
         var clientes = from e in _clientes select e;
         if(!string.IsNullOrEmpty(cadenabuscar)) {
-            clientes = clientes.Where(e=>e.Apellido.Contains(cadenabuscar) || e.Nombre.Contains(cadenabuscar));
+        clientes = clientes.Where(e=>e.Apellido.Contains(cadenabuscar) || e.Nombre.Contains(cadenabuscar));
         }
         return clientes.ToList();
     }
@@ -19,9 +19,9 @@ public class ClienteServicio {
     public bool AgregarActualizar(Cliente cliente) {
         try {
             if (cliente.Id == 0)
-             ctx.Clientes.Add(cliente);
+              ctx.Clientes.Add(cliente);
             else ctx.Clientes.Update(cliente);
-            ctx.SaveChanges();
+              ctx.SaveChanges();
             return true;
         }
         catch (Exception ex) { return false; }
